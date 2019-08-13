@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('login', 'AuthController@login')->name('auth.login');
+Route::get('users', 'UsersController@index')->name('users.index');
+Route::get('users/{user}', 'UsersController@show')->name('users.show')->where('user', '[0-9]+');
+Route::post('users/store', 'UsersController@store')->name('users.store');
+Route::post('users/update/{user}', 'UsersController@update')->name('users.update')->where('user', '[0-9]+');
+Route::post('users/destroy/{user}', 'UsersController@destroy')->name('users.destroy')->where('user', '[0-9]+');
+Route::post('users/checkPass/{user}', 'UsersController@checkPass')->name('users.checkPass')->where('user', '[0-9]+');
+// Route::resource('users', 'UsersController');
+// Route::middleware(['jwtAuth'])->group(function () {
+// });
+

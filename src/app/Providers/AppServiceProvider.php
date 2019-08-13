@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // User
+        $this->app->bind(
+            \App\Services\User\UserServiceInterface::class,
+            \App\Services\User\UserService::class
+        );
     }
 }
