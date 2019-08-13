@@ -64,6 +64,7 @@ class UserService implements UserServiceInterface
     public function update(object $request, int $id)
     {
         $params = $request->only([
+            'name',
             'login_id',
             'password',
         ]);
